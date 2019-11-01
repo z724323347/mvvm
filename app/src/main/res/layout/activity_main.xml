@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.summer.app.vm.MainViewModel" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:text="@{viewModel.test}"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:onClick="@{viewModel::onTap}"
+            android:layout_height="56dp"
+            android:layout_margin="16dp"
+            android:textAllCaps="false"
+            android:text="onTap"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="16dp"
+            android:textAllCaps="false"
+            android:onClick="@{viewModel::onClink}"
+            android:text="onClink"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="16dp"
+            android:textAllCaps="false"
+            android:onClick="@{viewModel::toActivity}"
+            android:text="Activity"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="16dp"
+            android:textAllCaps="false"
+            android:onClick="@{viewModel::toTest}"
+            android:text="Test"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="16dp"
+            android:textAllCaps="false"
+            android:onClick="@{viewModel::toMvvm}"
+            android:text="mvvm"/>
+    </LinearLayout>
+
+</layout>
