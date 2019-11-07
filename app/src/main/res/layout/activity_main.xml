@@ -34,7 +34,7 @@
             android:layout_margin="16dp"
             android:textAllCaps="false"
             android:onClick="@{viewModel::onClink}"
-            android:text="onClink"/>
+            android:text="Eventbus"/>
 
         <Button
             android:layout_width="match_parent"

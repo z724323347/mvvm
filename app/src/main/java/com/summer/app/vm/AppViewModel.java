@@ -6,6 +6,11 @@ import android.widget.Toast;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.summer.app.bus.ReturnResult;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 public class AppViewModel extends ViewModel {
 
     private MutableLiveData<String> text = new MutableLiveData<>();
@@ -17,6 +22,8 @@ public class AppViewModel extends ViewModel {
     public void setButtonText(String text) {
         this.text.setValue(text);
     }
+
+
 
     /**
      * 按钮点击事件
@@ -39,6 +46,12 @@ public class AppViewModel extends ViewModel {
                 break;
         }
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(ReturnResult result) {
+        //接收以及处理数据
+        this.setButtonText("..." + result.getStatus());
+    };
 
 
 }

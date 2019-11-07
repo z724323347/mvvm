@@ -12,7 +12,11 @@ import androidx.lifecycle.ViewModel;
 
 import com.summer.app.AppActivity;
 import com.summer.app.TestActivity;
+import com.summer.app.bus.EventActivity_1;
+import com.summer.app.bus.ReturnResult;
 import com.summer.app.mvvm.MvvmActivity;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class MainViewModel extends ViewModel {
     private MutableLiveData<String> str = new MutableLiveData<>();
@@ -57,22 +61,7 @@ public class MainViewModel extends ViewModel {
     }
 
     public void onClink(View v) {
-        Intent intent = new Intent();
-        if (Build.VERSION.SDK_INT >= 26) {
-            // android 8.0引导
-            intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-            intent.putExtra("android.provider.extra.APP_PACKAGE", v.getContext().getPackageName());
-        } else if (Build.VERSION.SDK_INT >= 21) {
-            // android 5.0-7.0
-            intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
-            intent.putExtra("app_package", v.getContext().getPackageName());
-            intent.putExtra("app_uid", v.getContext().getApplicationInfo().uid);
-        } else {
-            // 其他
-            intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-            intent.setData(Uri.fromParts("package", v.getContext().getPackageName(), null));
-        }
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent intent = new Intent(v.getContext(), EventActivity_1.class);
         v.getContext().startActivity(intent);
     }
 

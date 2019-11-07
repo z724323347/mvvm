@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.view.View;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+
 import com.summer.basic.base.BaseNoModelActivity;
 import com.summer.app.databinding.ActivityTestBinding;
 
@@ -15,12 +18,24 @@ public class TestActivity extends BaseNoModelActivity<ActivityTestBinding> {
 
     @Override
     protected void initView() {
-
+        configToolbar();
     }
 
     @Override
     protected void initData() {
         dataBinding.setViewModel(this);
+    }
+
+    private void configToolbar() {
+//        Toolbar toolbar = dataBinding.toolbar;
+//        toolbar.setBackgroundResource(R.color.light_theme_background);
+//        setSupportActionBar(toolbar);
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar != null) {
+//            actionBar.setTitle("EventBus");
+//            actionBar.setSubtitle("Demo activity 1");
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
     }
 
     /**

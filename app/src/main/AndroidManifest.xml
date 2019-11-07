@@ -19,6 +19,9 @@
         </activity>
         <activity android:name=".AppActivity"/>
         <activity android:name=".TestActivity"/>
+        <activity android:name=".bus.EventActivity_1"/>
+        <activity android:name=".bus.EventActivity_2"/>
+        <activity android:name=".bus.EventActivity_3"/>
 
         <!--mvvm-->
         <activity android:name=".mvvm.MvvmActivity"/>
@@ -26,6 +29,7 @@
         <activity android:name=".mvvm.detail.DetailActivity"/>
         <activity android:name=".mvvm.lazy.LazyActivity"/>
         <activity android:name=".mvvm.linkage.LinkageActivity"/>
+
 
     </application>
 
