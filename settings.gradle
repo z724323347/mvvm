@@ -1,2 +1,2 @@
-include ':app', ':basicLib'
+include ':app', ':basicLib', ':boostmodule'
 rootProject.name='App'

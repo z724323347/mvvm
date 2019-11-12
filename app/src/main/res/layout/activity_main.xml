@@ -58,6 +58,14 @@
             android:textAllCaps="false"
             android:onClick="@{viewModel::toMvvm}"
             android:text="mvvm"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="16dp"
+            android:textAllCaps="false"
+            android:onClick="@{viewModel::toFlutter}"
+            android:text="Flutter"/>
     </LinearLayout>
 
 </layout>

@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.alibaba.arouter'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -8,11 +9,24 @@ android {
     defaultConfig {
         applicationId "com.summer.app"
         minSdkVersion 22
-        targetSdkVersion 29
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //Arouter  config
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(),AROUTER_GENERATE_DOC:"enable"]
+            }
+        }
     }
+
+    // no use
+    //packagingOptions {
+    //    exclude 'META-INF/services/javax.annotation.processing.Processor'
+    //}
+    
     buildTypes {
         release {
             minifyEnabled true
@@ -44,9 +58,15 @@ dependencies {
     implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     implementation project(path: ':basicLib')
+    implementation project(path: ':boostmodule')
 
     //eventbus
     implementation 'org.greenrobot:eventbus:3.1.1'
     //okdeeplink
-    implementation 'com.hongjun:okdeeplink-gradle:1.0.0'
+//    implementation 'com.hongjun:okdeeplink-gradle:1.0.0'
+
+    // Arouter 集成 // 替换成最新版本, 需要注意的是api,要与compiler匹配使用，均使用最新版可以保证兼容
+    implementation 'com.alibaba:arouter-api:1.5.0'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    api 'org.jetbrains:annotations:15.0'
 }

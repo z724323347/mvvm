@@ -1,19 +1,24 @@
 package com.summer.app.vm;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.summer.app.AppActivity;
 import com.summer.app.TestActivity;
 import com.summer.app.bus.EventActivity_1;
 import com.summer.app.bus.ReturnResult;
+import com.summer.app.config.ARouterConfig;
 import com.summer.app.mvvm.MvvmActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -78,5 +83,19 @@ public class MainViewModel extends ViewModel {
     public void toMvvm(View v) {
         Intent intent = new Intent(v.getContext(), MvvmActivity.class);
         v.getContext().startActivity(intent);
+    }
+
+    /**
+     * flutter
+     *
+     * @param v
+     */
+    public void toFlutter(View v) {
+        Toast.makeText(v.getContext(), "toFlutter", Toast.LENGTH_LONG).show();
+        ActivityOptionsCompat compat = ActivityOptionsCompat
+                .makeScaleUpAnimation(v, v.getWidth() / 2, v.getHeight() / 2, 0, 0);
+        ARouter.getInstance().build(ARouterConfig.module.MODULE_BOOST)
+                .withOptionsCompat(compat)
+                .navigation((Activity) v.getContext(),100);
     }
 }
